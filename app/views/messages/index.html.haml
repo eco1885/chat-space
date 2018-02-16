@@ -1,0 +1,47 @@
+.notification
+  .notification.notice グループを作成しました
+
+.contents
+
+  .sidebar
+    .leftHeader
+      %p.leftName ここに名前
+      %ul.header_list
+        %li.list
+          = fa_icon 'pencil-square-o'
+        %li.list
+          = fa_icon 'cog'
+    .groupsMenu
+      %p.group ここにグループ名
+      %p.message ここに最新メッセージ表示
+
+      %p.group2 ここにグループ名2
+      %p.message2 ここにメッセージ2
+
+
+  .chat
+    .chat__header
+      .left
+        .left__name ここに名前
+        %ul.members Member:
+        %li.members ここに名前
+
+
+      .chat__right
+        %p.rightContent Edit
+
+    .main
+      .main__chatmessages
+        .upper
+          .upper__chatmessage ここに名前
+          .upper__date 20xx/xx/xx xx:xx:xx
+        .lower
+          .lower__usermessages ここにメッセージ
+
+    .form
+      %input
+      %div.icon
+        = fa_icon 'picture-o'
+
+      .btn Send
+

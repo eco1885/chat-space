@@ -1,16 +1,15 @@
-.notification
-  .notification.notice グループを作成しました
-
 .contents
 
   .sidebar
     .leftHeader
-      %p.leftName ここに名前
+      %h3.leftName
+        = current_user.name
       %ul.header_list
         %li.list
           = fa_icon 'pencil-square-o'
         %li.list
-          = fa_icon 'cog'
+          = link_to edit_user_path do
+            = fa_icon 'cog', class: 'icon'
     .groupsMenu
       %p.group ここにグループ名
       %p.message ここに最新メッセージ表示

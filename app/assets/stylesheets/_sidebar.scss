@@ -1,73 +1,47 @@
-.contents {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  display: flex;
-
-  .sidebar {
+.contents
+  .side-bar {
+    box-sizing: border-box;
+    color: $white;
     width: 300px;
-    height: 100vh;
-
-    .leftHeader {
-      background-color: #253141;
+    .header {
+      background-color: $side_blue_dark;
       height: 100px;
-      padding: 0px 20px;
-
-      .leftName {
-        font-size: 16px;
-        font-weight: bold;
-        color: #FFF;
+      line-height: 100px;
+      padding: 0 20px;
+      &__name {
         display: inline-block;
-        line-height: 100px;
-      }
-
-      .header_list{
-        float: right;
-
-        .list {
-          font-size: 16px;
-          color: #fff;
-          display: inline-block;
-          line-height: 100px;
-        }
-
-      .userName {
-        font-size: 16px;
-        color: #FFFFFF;
+        font-size: $side_header_font;
         font-weight: bold;
-        line-height: 100px;
       }
+      &__lists {
+        display: inline-block;
+        float: right;
+        .list {
+          display: inline-block;
+        }
+        .icon {
+          color: $white;
+          font-size: $side_header_font;
+        }
       }
     }
 
-    .groupsMenu {
-      background-color: #2f3e51;
+    .groups {
+      background-color: $side_blue_light;
       height: calc(100vh - 100px);
-      padding: 0px 20px;
-
+      padding: 0 20px;
       .group {
-        font-size: 15px;
-        color :#FFFFFF;
-        padding-top: 20px;
-      }
-
-      .message {
-        font-size: 11px;
-        color: #FFFFFF;
-        padding-top: 5px;
-      }
-
-      .group2 {
-        font-size: 15px;
-        color: #FFFFFF;
-        padding-top: 60px;
-      }
-
-      .message2 {
-        font-size: 11px;
-        color: #FFFFFF;
-        padding-top: 5px;
+        box-sizing: border-box;
+        padding: 20px 0 40px;
+        &__name {
+          color: $white;
+          font-size: $side_group_name;
+        }
+        &__message {
+          color: $white;
+          font-size: $side_group_message;
+          margin-top: 5px;
+        }
       }
     }
   }
-}

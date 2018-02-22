@@ -1,51 +1,31 @@
 .contents
 
-  .sidebar
-    .leftHeader
-      %h3.leftName
-        = current_user.name
-      %ul.header_list
-        %li.list
-          = link_to new_group_path do
-            = fa_icon 'pencil-square-o'
-        %li.list
-          = link_to edit_user_registration_path do
-            = fa_icon 'cog', class: 'icon'
-    .groupsMenu
-      - current_user.groups.each do |group|
-        = link_to group_messages_path(group) do
-          .group__name
-            = group.name
-          .group__message
-            メッセージはまだありません。
-
-      %p.group2 ここにグループ名2
-      %p.message2 ここにメッセージ2
-
+  = render partial: "shared/side_bar"
 
   .chat
-    .chat__header
-      .left
-        .left__name ここに名前
-        %ul.members Member:
-        %li.members ここに名前
+    .header
+      .left-header
+        .left-header__title ここにタイトル
+        .left-header__members
+          %ul.member Member:
+          %li.member ここに名前
 
 
-      .chat__right
-        %p.rightContent Edit
+      .right-header
+        %p.right-header__button Edit
 
-    .main
-      .main__chatmessages
-        .upper
-          .upper__chatmessage ここに名前
-          .upper__date 20xx/xx/xx xx:xx:xx
-        .lower
-          .lower__usermessages ここにメッセージ
+    .mainMessages
+      .messages
+        = render @messages
+
 
     .form
-      %input
-      %div.icon
-        = fa_icon 'picture-o'
+      = form_for [@group, @message], html: {id: 'new_message'} do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
 
-      .btn Send
 

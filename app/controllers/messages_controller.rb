@@ -13,10 +13,8 @@ class MessagesController < ApplicationController
         format.html { redirect_to group_messages_path(@group), notice: 'メッセージが送信されました' }
         format.json
       else
-        @messages = @group.messages.includes(:user)
         flash.now[:alert] = 'メッセージを入力してください。'
         format.html { render :index }
-        format.json
       end
     end
   end

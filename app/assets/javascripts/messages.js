@@ -2,7 +2,7 @@ $(function() {
   function messagesHTML(message){
     var imageURL = ""
     if (message.image){
-      imageURL = `<img class="lower-message__image" src= ${message.image} />`
+      imageURL = `<img class="lower-message__image" src= ${message.image} >`
       var html =
         `<div class="message">
           <div class="upper-message">
@@ -55,10 +55,15 @@ $(function() {
     })
     .done(function(data) {
       var html = messagesHTML(data);
-      console.log(data)
       $('.messages').append(html);
       $('.form__message').val('');
-    });
+      $('#new_message').on("submit", function(){
+        $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight}, 500, 'swing');
+      });
+    })
+    // .fail(function(){
+    //   alert('error');
+    // });
     return false;
   });
 });

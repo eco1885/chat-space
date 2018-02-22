@@ -6,18 +6,13 @@
         = current_user.name
       %ul.header_list
         %li.list
-          = link_to new_group_path do
-            = fa_icon 'pencil-square-o'
+          = fa_icon 'pencil-square-o'
         %li.list
-          = link_to edit_user_registration_path do
+          = link_to edit_user_path do
             = fa_icon 'cog', class: 'icon'
     .groupsMenu
-      - current_user.groups.each do |group|
-        = link_to group_messages_path(group) do
-          .group__name
-            = group.name
-          .group__message
-            メッセージはまだありません。
+      %p.group ここにグループ名
+      %p.message ここに最新メッセージ表示
 
       %p.group2 ここにグループ名2
       %p.message2 ここにメッセージ2

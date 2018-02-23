@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
         format.json
       else
         flash.now[:alert] = 'メッセージを入力してください。'
-        format.html { render :index }
+        render :index
       end
     end
   end

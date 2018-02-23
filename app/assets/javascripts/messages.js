@@ -1,10 +1,7 @@
 $(function() {
   function messagesHTML(message){
-    if (message.imgage){
-      var imageURL = '<img class="lower-message__image" src= ${message.image} >'
-    }else{
-      var imageURL = ""
-    }
+    // ifを三項演算子に書き換え
+    var imageURL = (message.image)? `<img class="lower-message__image" src= ${message.image} >`: "";
     var html =
       `<div class="message">
          <div class="upper-message">

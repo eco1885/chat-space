@@ -61,9 +61,9 @@ $(function() {
         $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight}, 500, 'swing');
       });
     })
-    .fail(function(){
-      alert('error');
-    });
+    // .fail(function(){
+    //   alert('error');
+    // });
     return false;
   });
 });

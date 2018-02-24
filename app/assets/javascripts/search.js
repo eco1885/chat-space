@@ -57,9 +57,15 @@ $(function(){
     $("#user-search-result").on("click", ".chat-group-user__btn--add", function(){
       var user_id = $(this).data("user-id");
       var user_name = $(this).data("user-name")
-      console.log(this)
       $(this).parent().remove();
       chatMember(user_id,user_name)
     });
 
+  $(function() {
+    $(".chat-group-user").on("click", ".chat-group-user__btn--remove", function() {
+      console.log(this)
+    var user_id = $(this).data("user-id");
+    $(this).parent().remove();
+    });
+  });
 });

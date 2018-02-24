@@ -10,14 +10,12 @@ $(function() {
 
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
-    var reg = new RegExp(input);
 
     if (input !== ""){
     $.ajax({
       type: 'GET',
       url: '/users',
       data: { name: input },
-      processData: false,
       contentType: false,
       dataType: 'json'
     })
@@ -25,9 +23,7 @@ $(function() {
       $('#user-search-result').empty();
       if (users.length !== 0){
         users.forEach(function(user){
-          if (user.name.match(reg)){
-            var html = usersHTML(user)
-          }
+          var html = usersHTML(user)
         });
       }
     })
@@ -50,19 +46,18 @@ $(function(){
         <p class='chat-group-user__name'>${user_name}</p>
         <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
       </div>`
-      $("#chat-group-user-22").append(memberHTML)
+      return memberHTML
   }
 
     $("#user-search-result").on("click", ".chat-group-user__btn--add", function(){
       var user_id = $(this).data("user-id");
       var user_name = $(this).data("user-name")
       $(this).parent().remove();
-      chatMember(user_id,user_name)
+      $("#chat-group-user-22").append(chatMember(user_id,user_name))
     });
 
   $(function() {
     $(".chat-group-user").on("click", ".chat-group-user__btn--remove", function() {
-      console.log(this)
     var user_id = $(this).data("user-id");
     $(this).parent().remove();
     });

@@ -37,6 +37,7 @@ $(function() {
   });
 });
 
+//ユーザーの追加、削除機能
 $(function(){
 
   function chatMember(user_id,user_name){

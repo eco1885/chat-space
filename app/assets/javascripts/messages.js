@@ -3,7 +3,7 @@ $(function() {
     // ifを三項演算子に書き換え
     var imageURL = (message.image)? `<img class="lower-message__image" src= ${message.image} >`: "";
     var html =
-      `<div class="message">
+      `<div class="message" data-id=${message.id}>
          <div class="upper-message">
           <div class="upper-message__user-name">
             ${message.user_name}
@@ -46,4 +46,31 @@ $(function() {
     });
     return false;
   });
+
+
+//自動更新機能
+
+    var interval = setInterval(function(){
+      // 正規表現でURLに一致しないページで自動更新しないよう分岐
+      if (location.href.match(/\/groups\/\d+\/messages/)){
+        var message_id = $('.message:last').data('id');
+    $.ajax({
+      url: location.href,
+      type: 'GET',
+      data: { message: { id: message_id } },
+      dataType: 'json'
+    })
+    .done(function(new_messages){
+      $.each(new_messages,function(i,new_message){
+        var html = messagesHTML(new_message)
+        $('.messages').append(html)
+        $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight}, 500, 'swing');
+      })
+    })
+    .fail(function() {
+      alert('自動更新失敗');
+    });
+  } else {
+    clearInterval(interval);
+  }} , 5000 );
 });

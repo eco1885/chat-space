@@ -5,15 +5,18 @@
   .chat
     .header
       .left-header
-        .left-header__title ここにタイトル
+        .left-header__title
+          = @group.name
         .left-header__members
           %ul.member Member:
-          %li.member ここに名前
+          %li.member
+            - @group.group_users.each do |group_user|
+              = group_user.user.name
 
 
       .right-header
-        %p.right-header__button Edit
-
+        %p.right-header__button
+          = link_to "Edit" ,"edit_group_path(#{@group.id})"
     .mainMessages
       .messages
         = render @messages

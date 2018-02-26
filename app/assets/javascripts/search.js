@@ -10,12 +10,14 @@ $(function() {
 
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
+    var ids = $(".chat-group-user").attr("value")
+    console.log(ids)
 
     if (input !== ""){
     $.ajax({
       type: 'GET',
       url: '/users',
-      data: { name: input },
+      data: { name: input, id: ids },
       contentType: false,
       dataType: 'json'
     })

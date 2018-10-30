@@ -19,8 +19,7 @@ module ChatSpace
     config.i18n.default_locale = :ja
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
+    config.assets.initialize_on_precompile = false
 
   end
 end
-
-config.assets.initialize_on_precompile = false
